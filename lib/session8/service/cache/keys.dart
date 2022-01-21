@@ -1,0 +1,1 @@
+const String MY_CACHE_COUNTER = "myCounter";
