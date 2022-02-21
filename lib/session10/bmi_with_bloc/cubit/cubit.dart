@@ -19,6 +19,7 @@ class BmiCubit extends Cubit<BmiStates>{
     weightValue++;
     emit(weightAddState());
   }
+
   void minusWeight(){
     weightValue--;
     emit(weightMinusState());
@@ -28,6 +29,7 @@ class BmiCubit extends Cubit<BmiStates>{
     heightValue++;
     emit(heightAddState());
   }
+
   void minusHeight(){
     heightValue--;
     emit(heightMinusState());
@@ -37,6 +39,7 @@ class BmiCubit extends Cubit<BmiStates>{
     age++;
     emit(ageAddState());
   }
+
   void minusAge(){
     age--;
     emit(ageMinusState());
