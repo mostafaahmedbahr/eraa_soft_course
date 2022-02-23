@@ -12,24 +12,29 @@ class CurrencyCubit extends Cubit<CurrencyStates>{
 String dropdownvalue1;
 String dropdownvalue2;
   String newValue;
-  var amountCon=TextEditingController();
 
+  var amountCon=TextEditingController();
+  var index;
   var items =  ['','EGP','USD','AUD','QAR','SAR',];
+
+  var itemsCurrency =  ['','LE','USD','AUD','QAR','SAR',];
 
   void resetValue()
   {
     amountCon.clear();
     dropdownvalue1='';
     dropdownvalue2='';
+    currency.approxResult=0;
     emit(resetValueState());
   }
 
   CurrencyModel currency;
-  void getCurrencyData({
+
+  Future getCurrencyData({
   String from,
   String to,
     int  amount
-})
+}) async
   {
     //TODO: Add loading state
     DioHelper.getData(
@@ -39,7 +44,7 @@ String dropdownvalue2;
         "to":to,
       },
     ).then((value){
-      print(value.data.toString());
+      print(value.data);
       currency=CurrencyModel.fromJson(value.data);
 
       emit(CurrencySuccessState());

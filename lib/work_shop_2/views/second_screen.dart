@@ -9,6 +9,7 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
 
+  var cur ="";
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrencyCubit,CurrencyStates>(
@@ -125,15 +126,38 @@ class _SecondScreenState extends State<SecondScreen> {
                           style: ElevatedButton.styleFrom(
                             primary: Colors.teal,
                           ),
-                          onPressed: (){
-                            print(cubit.amountCon.text);
-                            print(cubit.dropdownvalue1.toString());
-                            print(cubit.dropdownvalue2.toString());
-                            cubit.getCurrencyData(
-                              from: "${cubit.dropdownvalue1}",
-                              to: "${cubit.dropdownvalue2}",
-                              amount: int.parse(cubit.amountCon.text),
-                            );
+                          onPressed: () async{
+                             // print(cubit.amountCon.text);
+                             // print(cubit.dropdownvalue1.toString());
+                             // print(cubit.dropdownvalue2.toString());
+                            await cubit.getCurrencyData(
+                               from: "${cubit.dropdownvalue1}",
+                               to: "${cubit.dropdownvalue2}",
+                               amount: int.parse(cubit.amountCon.text),
+                             );
+
+                             // print(cubit.currency.approxResult);
+                            if(cubit.dropdownvalue2=="EGP")
+                             setState(() {
+                               cur="L.E";
+                             });
+                            if(cubit.dropdownvalue2=="USD")
+                              setState(() {
+                                cur="USD";
+                              });
+                            if(cubit.dropdownvalue2=="AUD")
+                              setState(() {
+                                cur="AUD";
+                              });
+                            if(cubit.dropdownvalue2=="QAR")
+                              setState(() {
+                                cur="QAR";
+                              });
+                            if(cubit.dropdownvalue2=="SAR")
+                              setState(() {
+                                cur="SAR";
+                              });
+                            print(cur);
                           },
                           child: Text("Convert",
                             style: TextStyle(
@@ -151,9 +175,7 @@ class _SecondScreenState extends State<SecondScreen> {
                             primary: Colors.teal,
                           ),
                           onPressed: (){
-                            setState(() {
                               cubit.resetValue();
-                            });
                             // cubit.getCurrencyData(
                             //   from: "${cubit.dropdownvalue1}",
                             //   to: "${cubit.dropdownvalue2}",
@@ -172,13 +194,20 @@ class _SecondScreenState extends State<SecondScreen> {
                     ],
                   ),
                    SizedBox(height: 50,),
-                   Text(
-                     cubit.currency==null?'0':
-                     cubit.currency.approxResult.toString(),
-                   style: TextStyle(
-                     fontSize: 45,
-                     fontWeight: FontWeight.bold,
-                   ),),
+                   Row(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                       Text(
+                         cubit.currency==null?'0':
+                         cubit.currency.approxResult.toString(),
+                         style: TextStyle(
+                           fontSize: 45,
+                           fontWeight: FontWeight.bold,
+                         ),),
+                       SizedBox(width: 10,),
+                       Text("${cur}"),
+                     ],
+                   ),
                 ],
               ),
             ),

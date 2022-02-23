@@ -1,5 +1,5 @@
 
-//https://newsapi.org/v2/top-headlines?country=eg&category=business&apiKey=061656a4c0e04cf3add75a8a2eecb614
+// https://newsapi.org/v2/top-headlines?country=eg&category=business&apiKey=061656a4c0e04cf3add75a8a2eecb614
 import 'package:dio/dio.dart';
 
 class DioHelper
@@ -9,14 +9,14 @@ class DioHelper
   static int() {
     dio = Dio(
       BaseOptions(
-        baseUrl: "https://newsapi.org",
+        baseUrl: "https://newsapi.org/",
         receiveDataWhenStatusError: true,
       ),
     );
   }
 
   static Future<Response> getData({
-    String url="/v2/top-headlines",
+    String url="v2/top-headlines",
     Map<String,dynamic> query,
   }) async
   {

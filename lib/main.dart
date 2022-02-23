@@ -1,5 +1,6 @@
 import 'package:eraa_soft_course/session10/bmi_with_bloc/cubit/cubit.dart';
  import 'package:eraa_soft_course/session12/cubit/cubit.dart';
+import 'package:eraa_soft_course/work_shop_1/moduls/news_app.dart';
 import 'package:eraa_soft_course/work_shop_2/dio_helper/dio_helper.dart';
   import 'package:eraa_soft_course/session13/bloc/chat/cubit.dart';
 import 'package:eraa_soft_course/session13/bloc/register/cubit.dart';

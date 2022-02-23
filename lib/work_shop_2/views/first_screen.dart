@@ -15,8 +15,7 @@ class CurrencyScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image(image:
-            NetworkImage("https://static.vecteezy.com/system/resources/previews/002/151/429/original/global-currency-exchange-icon-with-abstract-high-speed-network-on-blue-background-vector.jpg")),
+            Image.asset("assets/images/ea.jpg"),
             Text("Currency App ",
             style: TextStyle(
               fontSize: 40,
